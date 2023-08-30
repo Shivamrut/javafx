@@ -1,44 +1,141 @@
 package com.example.demo;
 
+//01
+//import javafx.application.Application;
+//import javafx.fxml.FXMLLoader;
+//import javafx.scene.Group;
+//import javafx.scene.Scene;
+//import javafx.scene.image.Image;
+//import javafx.scene.input.KeyCombination;
+//import javafx.scene.paint.Color;
+//import javafx.stage.Stage;
+//
+//
+//import java.io.IOException;
+//
+//public class HelloApplication extends Application {
+//
+//
+//    public static void main(String[] args) {
+//
+//        launch(args);
+//    }
+//
+//    @Override
+//    public void start(Stage stage) throws Exception {
+//
+//        Group root = new Group();
+//        Image image = new Image("icon_cat.png");
+//        stage.getIcons().add(image);
+//        Scene scene = new Scene(root );
+//        stage.setScene(scene);
+//        stage.setWidth(420);
+//        stage.setHeight(420);
+//        stage.setResizable(false);
+//
+////        stage.setX(50);
+////        stage.setY(50);
+////        stage.setFullScreen(true);
+////        stage.setFullScreenExitHint("Hit q to exit full screen");
+////        stage.setFullScreenExitKeyCombination(KeyCombination.valueOf("q"));
+//
+//        stage.setTitle("JavaFx demo yohohoho");
+//
+//        stage.show();
+//    }
+//}
+
+
+//02
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
-import javafx.scene.input.KeyCombination;
+import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
+import javafx.scene.shape.Line;
+import javafx.scene.shape.Polygon;
+import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-
-import java.io.IOException;
-
-public class HelloApplication extends Application {
-
+public class HelloApplication extends Application{
 
     public static void main(String[] args) {
-
         launch(args);
     }
 
+
     @Override
     public void start(Stage stage) throws Exception {
-
         Group root = new Group();
-        Image image = new Image("icon_cat.png");
-        stage.getIcons().add(image);
-        Scene scene = new Scene(root );
+        Scene scene = new Scene(root,1080,720,Color.SKYBLUE);
+        Image icon = new Image("icon_cat.png");
+        stage.getIcons().add(icon);
+        stage.setTitle("Vooh vooh");
+
         stage.setScene(scene);
-        stage.setWidth(420);
-        stage.setHeight(420);
-        stage.setResizable(false);
 
-//        stage.setX(50);
-//        stage.setY(50);
-//        stage.setFullScreen(true);
-//        stage.setFullScreenExitHint("Hit q to exit full screen");
-//        stage.setFullScreenExitKeyCombination(KeyCombination.valueOf("q"));
+        Text text = new Text();
+        text.setText("Whooooa!!");
+        text.setX(100);
+        text.setY(100);
+        text.setFont(Font.font("Verdana",100));
+        text.setFill(Color.DARKGREEN);
 
-        stage.setTitle("JavaFx demo yohohoho");
+        root.getChildren().add(text);
+
+        Line line = new Line();
+        line.setStartX(100);
+        line.setStartY(150);
+        line.setEndX(700);
+        line.setEndY(150);
+        line.setStrokeWidth(5);
+        line.setStroke(Color.PALEVIOLETRED);
+
+        root.getChildren().add(line);
+
+        Rectangle rect = new Rectangle();
+        rect.setX(10);
+        rect.setY(175);
+        rect.setFill(Color.LIME);
+        rect.setHeight(100);
+        rect.setWidth(100);
+        rect.setStrokeWidth(5);
+        rect.setStroke(Color.BLACK);
+
+        root.getChildren().add(rect);
+
+        Polygon triangle = new Polygon();
+        triangle.getPoints().setAll(
+                200.0,200.0,
+                450.0,300.0,
+                150.0,300.0
+        );
+        triangle.setStroke(Color.BLACK);
+        triangle.setStrokeWidth(20);
+        triangle.setFill(Color.OLIVE);
+
+        root.getChildren().add(triangle);
+
+        Circle circle = new Circle();
+        circle.setCenterX(600);
+        circle.setCenterY(250);
+        circle.setRadius(50);
+        circle.setFill(Color.ORANGE);
+
+        root.getChildren().add(circle);
+
+        Image img = new Image("cat.jpg");
+        ImageView imgview = new ImageView(img);
+        imgview.setX(100);
+        imgview.setY(400);
+        imgview.setFitWidth(200.0);
+        imgview.setFitHeight(300.0);
+
+        root.getChildren().add(imgview);
 
         stage.show();
     }
