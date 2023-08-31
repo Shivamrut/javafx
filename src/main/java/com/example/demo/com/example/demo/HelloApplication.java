@@ -142,29 +142,59 @@ package com.example.demo;
 //}
 
 //03
+//import javafx.application.Application;
+//import javafx.fxml.FXMLLoader;
+//import javafx.scene.Group;
+//import javafx.scene.Parent;
+//import javafx.scene.Scene;
+//import javafx.scene.image.Image;
+//import javafx.stage.Stage;
+//
+//public class HelloApplication extends Application {
+//
+//    @Override
+//    public void start(Stage stage) throws Exception {
+//        Parent root = FXMLLoader.load(getClass().getResource("hello-view.fxml"));
+//        Scene scene = new Scene(root);
+//
+//        stage.setTitle("Scenebuilder01");
+//        stage.setWidth(720.0);
+//        stage.setHeight(720.0);
+//        stage.setResizable(false);
+//        Image icon = new Image("icon_cat.png");
+//        stage.getIcons().add(icon);
+//        stage.setScene(scene);
+//        stage.show();
+//    }
+//
+//    public static void main(String[] args) {
+//        launch(args);
+//    }
+//}
+
+//04
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 public class HelloApplication extends Application {
 
     @Override
-    public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("hello-view.fxml"));
-        Scene scene = new Scene(root);
+    public void start(Stage stage)  {
+        try
+        {
+            Parent root = FXMLLoader.load(getClass().getResource("hello-view.fxml"));
 
-        stage.setTitle("Scenebuilder01");
-        stage.setWidth(720.0);
-        stage.setHeight(720.0);
-        stage.setResizable(false);
-        Image icon = new Image("icon_cat.png");
-        stage.getIcons().add(icon);
-        stage.setScene(scene);
-        stage.show();
+            stage.setScene(new Scene(root));
+            stage.setResizable(false);
+            stage.show();
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
     }
 
     public static void main(String[] args) {
