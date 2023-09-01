@@ -203,6 +203,38 @@ package com.example.demo;
 //}
 
 //05
+//import javafx.application.Application;
+//import javafx.fxml.FXMLLoader;
+//import javafx.scene.Parent;
+//import javafx.scene.Scene;
+//import javafx.stage.Stage;
+//
+//public class HelloApplication extends Application {
+//    @Override
+//    public void start(Stage stage) {
+//
+//        try{
+//            //Parent root = FXMLLoader.load(getClass().getResource("hello-view.fxml"));
+//            Parent root = FXMLLoader.load(getClass().getResource("hello-view.fxml"));
+//            Scene scene = new Scene(root);
+//            String css = this.getClass().getResource("application.css").toExternalForm();
+//            scene.getStylesheets().add(css);
+//            stage.setScene(scene);
+//            stage.show();
+//        }
+//        catch (Exception e)
+//        {
+//            e.printStackTrace();
+//        }
+//
+//    }
+//
+//    public static void main(String[] args) {
+//        launch(args);
+//    }
+//}
+
+//06
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -210,26 +242,21 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class HelloApplication extends Application {
-    @Override
-    public void start(Stage stage) {
 
-        try{
-            //Parent root = FXMLLoader.load(getClass().getResource("hello-view.fxml"));
+    @Override
+    public void start(Stage stage)  {
+        try {
             Parent root = FXMLLoader.load(getClass().getResource("hello-view.fxml"));
-            Scene scene = new Scene(root);
-            String css = this.getClass().getResource("application.css").toExternalForm();
-            scene.getStylesheets().add(css);
-            stage.setScene(scene);
+            Scene scene1 = new Scene(root);
+            stage.setScene(scene1);
             stage.show();
         }
         catch (Exception e)
         {
+            System.out.println();
+            System.out.println("Error in javafx");
+            System.out.println();
             e.printStackTrace();
         }
-
-    }
-
-    public static void main(String[] args) {
-        launch(args);
     }
 }
