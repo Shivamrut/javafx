@@ -118,57 +118,95 @@ package com.example.demo;
 
 
 //08
-import javafx.event.ActionEvent;
+//import javafx.event.ActionEvent;
+//import javafx.fxml.FXML;
+//import javafx.fxml.FXMLLoader;
+//import javafx.scene.Node;
+//import javafx.scene.Parent;
+//import javafx.scene.Scene;
+//import javafx.scene.control.Alert;
+//import javafx.scene.control.Button;
+//import javafx.scene.control.ButtonType;
+//import javafx.scene.layout.AnchorPane;
+//import javafx.stage.Stage;
+//
+//import java.io.IOException;
+//
+//
+//public class HelloController {
+//
+//    @FXML
+//    private Button button_logout, button_login;
+//    @FXML
+//    private AnchorPane scenePane, scenePane2;
+//    private Stage stage;
+//    private Parent root;
+//    private Scene scene;
+//
+//    public void logout(ActionEvent event) throws IOException {
+//        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+//        alert.setTitle("Logout");
+//        alert.setHeaderText("You're about to logout");
+//        alert.setContentText("Do you want to save before exiting?: ");
+//
+//        if(alert.showAndWait().get() == ButtonType.OK)
+//        {
+//            stage = (Stage) scenePane.getScene().getWindow();
+//            root = FXMLLoader.load(getClass().getResource("scene2.fxml"));
+//            stage.setScene(new Scene(root));
+//            stage.show();
+//            System.out.println("Logged out!!");
+//        }
+//        else System.out.println("Cancelled logout!!");
+//
+//    }
+//
+//    public void login(ActionEvent event) throws Exception
+//    {
+//        System.out.println("Logging in!!");
+//        root = FXMLLoader.load(getClass().getResource("hello-view.fxml"));
+//        scene = new Scene(root);
+//        stage = (Stage) scenePane2.getScene().getWindow();
+//        stage.setScene(scene);
+//        stage.show();
+//    }
+//
+//}
+
+//09
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
-import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
-import java.io.IOException;
-
+import java.util.HashMap;
+import java.util.Map;
 
 public class HelloController {
-
     @FXML
-    private Button button_logout, button_login;
+    private ImageView imageview_img1;
     @FXML
-    private AnchorPane scenePane, scenePane2;
-    private Stage stage;
-    private Parent root;
-    private Scene scene;
+    private Button button_btn1;
+    private boolean switchImg = false;
+    private Image img ;
+    private Map<String, Image> imageCache = new HashMap<>();
 
-    public void logout(ActionEvent event) throws IOException {
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Logout");
-        alert.setHeaderText("You're about to logout");
-        alert.setContentText("Do you want to save before exiting?: ");
+    public void displayImage() {
+        String imageName = switchImg ? "cat.jpg" : "cat2.jpg";
 
-        if(alert.showAndWait().get() == ButtonType.OK)
-        {
-            stage = (Stage) scenePane.getScene().getWindow();
-            root = FXMLLoader.load(getClass().getResource("scene2.fxml"));
-            stage.setScene(new Scene(root));
-            stage.show();
-            System.out.println("Logged out!!");
+        // Check if the image is in the cache
+        if (imageCache.containsKey(imageName)) {
+            img = imageCache.get(imageName);
+        } else {
+            img = new Image(getClass().getResourceAsStream(imageName));
+
+            // Add the loaded image to the cache
+            imageCache.put(imageName, img);
         }
-        else System.out.println("Cancelled logout!!");
 
-    }
-
-    public void login(ActionEvent event) throws Exception
-    {
-        System.out.println("Logging in!!");
-        root = FXMLLoader.load(getClass().getResource("hello-view.fxml"));
-        scene = new Scene(root);
-        stage = (Stage) scenePane2.getScene().getWindow();
-        stage.setScene(scene);
-        stage.show();
+        imageview_img1.setImage(img);
+        switchImg = !switchImg;
+        System.out.println("Click");
     }
 
 }
